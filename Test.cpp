@@ -49,35 +49,21 @@ TEST_CASE("NORMAL TESTS")
 
 }
 
-TEST_CASE("Invalid page, row, column index")
+TEST_CASE("Invalid column index")
 {
     Notebook notebook;
     //write
-    CHECK_THROWS(notebook.write(-10, 10, 10, horizontal, "aaaaa"));
-    CHECK_THROWS(notebook.write(10, -10, 10, horizontal, "aaaaa"));
-    CHECK_THROWS(notebook.write(10, 10, -10, horizontal, "aaaaa"));
-    CHECK_THROWS(notebook.write(-10, -10, 10, horizontal, "aaaaa"));
-    CHECK_THROWS(notebook.write(10, -10, -10, horizontal, "aaaaa"));
-    CHECK_THROWS(notebook.write(-10, 10, -10, horizontal, "aaaaa"));
-    CHECK_THROWS(notebook.write(-10, -10, -10, horizontal, "aaaaa"));
+    CHECK_THROWS(notebook.write(10, 10, 100, horizontal, "aaaaa"));
+    CHECK_THROWS(notebook.write(10, 100, 150, horizontal, "aaaaa"));
+    CHECK_THROWS(notebook.write(10, 10, 404, horizontal, "aaaaa"));
 
-    //read
-    CHECK_THROWS(notebook.read(-10, 10, 10, horizontal, 5));
-    CHECK_THROWS(notebook.read(10, -10, 10, horizontal, 5));
-    CHECK_THROWS(notebook.read(10, 10, -10, horizontal, 5));
-    CHECK_THROWS(notebook.read(-10, -10, 10, horizontal, 5));
-    CHECK_THROWS(notebook.read(10, -10, -10, horizontal, 5));
-    CHECK_THROWS(notebook.read(-10, 10, -10, horizontal, 5));
-    CHECK_THROWS(notebook.read(-10, -10, -10, horizontal, 5));
+    CHECK_THROWS(notebook.read(10, 10, 100, horizontal, 5));
+    CHECK_THROWS(notebook.read(10, 100, 150, horizontal, 5));
+    CHECK_THROWS(notebook.read(10, 10, 404, horizontal, 5));
 
-    //erase
-    CHECK_THROWS(notebook.erase(-10, 10, 10, horizontal, 5));
-    CHECK_THROWS(notebook.erase(10, -10, 10, horizontal, 5));
-    CHECK_THROWS(notebook.erase(10, 10, -10, horizontal, 5));
-    CHECK_THROWS(notebook.erase(-10, -10, 10, horizontal, 5));
-    CHECK_THROWS(notebook.erase(10, -10, -10, horizontal, 5));
-    CHECK_THROWS(notebook.erase(-10, 10, -10, horizontal, 5));
-    CHECK_THROWS(notebook.erase(-10, -10, -10, horizontal, 5));
+    CHECK_THROWS(notebook.erase(10, 10, 100, horizontal, 5));
+    CHECK_THROWS(notebook.erase(10, 100, 150, horizontal, 5));
+    CHECK_THROWS(notebook.erase(10, 10, 404, horizontal, 5));
 }
 
 TEST_CASE("String too long")
